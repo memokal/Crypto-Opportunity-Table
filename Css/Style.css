@@ -3,13 +3,12 @@
 	--secondary-color:#1089FF;
 	--third-color:#E5E5E5;
 	--fourth-color:#EEEEEE;
-    --secondary-font:'Patrick Hand', cursive;
+    --primary-font:'Anek Odia', sans-serif;
 }
 
 /* Typography */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Odia:wght@200&display=swap');
 
 /* Typography End */
 
@@ -58,3 +57,32 @@ table {
 	border-spacing: 0;
 }
 /* Css Reset End */
+
+.contaigner {display:flex; background:var(--fourth-color); height:98.8vh; border:5px dashed var(--third-color); justify-content:space-around;}
+#panel{display:flex; flex-direction:column; gap:0.5rem; padding: 1em; color:var(--primary-color); font-family:var(--primary-font); font-weight: 600; font-size: 0.9rem; }
+#panel input{
+	border-bottom: 1px dotted var(--secondary-color);
+    border-radius: 5px;
+	padding: 0.3em;
+	transition:0.2s ease;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+#panel input:hover{
+	border-bottom:1px solid var(--secondary-color);
+}
+#panel .btn:hover{
+	background:var(--secondary-color); 
+	color:var(--fourth-color); 
+	border-bottom:1px solid var(--fourth-color);
+}
+#table{padding:1em;}
+#table th{background:var(--secondary-color); color:var(--fourth-color); padding:1em;}
+#table td{background:var(--third-color); color:var(--primary-color); padding:1em;}
+
+/* Colors */
+.green{background:green!important; color:white!important;}
+.orange{background:orange!important;}
+.red{background:red!important;}
+.purple{background:purple!important; color:white!important;}
