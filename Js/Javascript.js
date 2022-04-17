@@ -10,7 +10,19 @@ function ekle() {
     var table= document.getElementById("rtable");
     var puan=0;
    
-    
+    if(pd.length>3 && pdex=="milyon"){
+        
+        if(pd.length==4){
+            pd=pd.substring(0,1)+"."+pd.substring(1,2);
+        }
+        if(pd.length==5){
+            pd=pd.substring(0,2)+"."+pd.substring(2,3);
+        }
+        if(pd.length==6){
+            pd=pd.substring(0,3)+"."+pd.substring(3,4);
+        }
+        pdex="milyar";
+    }
    
 
 
@@ -35,4 +47,10 @@ function color(a, b){
         return "purple"
     }
 
+}
+
+function prevent(a){
+    if (a.value.length > 6){
+      a.value = a.value.slice(0, 6)
+    }
 }
