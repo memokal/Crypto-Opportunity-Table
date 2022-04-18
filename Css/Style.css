@@ -58,6 +58,14 @@ table {
 }
 /* Css Reset End */
 /* Styling */
+#header{
+	text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+    background:var(--secondary-color);
+    color: var(--fourth-color);
+	font-family: var(--primary-font);
+}
 .contaigner {
 	display:flex; 
 	background:var(--fourth-color); 
@@ -113,3 +121,10 @@ table {
 .red{background:red!important;}
 .purple{background:purple!important; color:white!important;}
 /* Colors End */
+/* Responsive */
+@media(max-width:780px){
+	.contaigner{flex-direction:column; overflow:auto;}
+	#panel{max-width:12rem;}
+	#table{overflow:auto;}
+}
+/* Reponsive End */
