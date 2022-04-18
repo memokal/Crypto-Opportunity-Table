@@ -2,8 +2,10 @@ var puan=0;
 function ekle() {
     var coinName= document.getElementById("cad").value;
     var coinValue= document.getElementById("fiyat").value;
-    var h1= document.getElementById("hedef1").value;
-    var h2= document.getElementById("hedef2").value;
+    var enyuksek=document.getElementById("enyuksek").value;
+    var endusuk=document.getElementById("endusuk").value;
+    var h1=(enyuksek-endusuk)/100*61.8+parseInt(enyuksek);
+    var h2=(enyuksek-endusuk)/100*323.6+parseInt(enyuksek);
     var pd= document.getElementById("pd").value;
     var pdex= document.getElementById("milyon-milyar").value;
     var h1pd=(h1/coinValue)*pd;
