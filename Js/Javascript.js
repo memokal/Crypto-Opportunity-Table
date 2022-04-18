@@ -9,8 +9,7 @@ function ekle() {
     var h1pd=(h1/coinValue)*pd;
     var tepepd=(h2/coinValue)*pd;
     var table= document.getElementById("rtable");
-    var puan1= document.getElementById("puan1").value;
-    var puan2= document.getElementById("puan2").value;
+    var puan1= document.getElementById("puan1");
     
 
     if(pd.length>3 && pdex=="milyon"){
@@ -46,6 +45,11 @@ function ekle() {
     } else if(h2/coinValue>15){
         puan=puan+4;
     }
+
+    if(puan1.checked==true){
+        puan=puan+1;
+    }
+
 
     var template= "<tr><th>"+coinName+"</th><td>"+coinValue+"</td><td>"+h1+"</td><td>"+h2+"</td><td style='color:white; background:"+color(pd, pdex)+";'>"+pd+" "+pdex+"</td><td style='color:white; background:"+color(h1pd, pdex)+";'>"+h1pd+" "+pdex+"</td><td style='color:white; background:"+color(tepepd, pdex)+";'>"+tepepd+" "+pdex+"</td><th>"+puan+"</th></tr>";
    
