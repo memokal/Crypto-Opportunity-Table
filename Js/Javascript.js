@@ -13,6 +13,11 @@ function ekle() {
     var table= document.getElementById("rtable");
     var puan1= document.getElementById("puan1");
     
+    if(coinName=="" || coinValue=="" || enyuksek=="" || endusuk=="" || pd==""){
+        document.getElementById("uyari").innerHTML="Coin Adı, b ve c değeri, Güncel Fiyat ve Piyasa Değeri boş bırakılamaz";
+    }else{
+
+        document.getElementById("uyari").innerHTML="";    
 
     if(pd.length>3 && pdex=="milyon"){
         
@@ -53,10 +58,11 @@ function ekle() {
     }
 
 
-    var template= "<tr><th>"+coinName+"</th><td>"+coinValue+"</td><td>"+h1+"</td><td>"+h2+"</td><td style='color:white; background:"+color(pd, pdex)+";'>"+pd+" "+pdex+"</td><td style='color:white; background:"+color(h1pd, pdex)+";'>"+h1pd+" "+pdex+"</td><td style='color:white; background:"+color(tepepd, pdex)+";'>"+tepepd+" "+pdex+"</td><th>"+puan+"</th></tr>";
+    var template= "<tr><th>"+coinName+"</th><td>"+coinValue+"</td><td>"+h1.toPrecision(4)+"</td><td>"+h2.toPrecision(4)+"</td><td style='color:white; background:"+color(pd, pdex)+";'>"+pd+" "+pdex+"</td><td style='color:white; background:"+color(h1pd, pdex)+";'>"+h1pd+" "+pdex+"</td><td style='color:white; background:"+color(tepepd, pdex)+";'>"+tepepd+" "+pdex+"</td><th>"+puan+"</th></tr>";
    
     table.innerHTML += template;
     puan=0;
+}
 }
 
 

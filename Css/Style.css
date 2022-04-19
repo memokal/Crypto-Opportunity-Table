@@ -73,11 +73,13 @@ table {
 	border:5px dashed var(--third-color); 
 	justify-content:space-around;
 }
+#uyari{color:red;}
 #panel{
 	display:flex; 
 	flex-direction:column; 
 	gap:0.5rem; 
 	padding: 1em; 
+	max-width:10rem;
 	color:var(--primary-color); 
 	font-family:var(--primary-font); 
 	font-weight: 600; 
