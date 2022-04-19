@@ -7,19 +7,21 @@ function ekle() {
     var h1=(enyuksek-endusuk)/100*61.8+parseInt(enyuksek);
     var h2=(enyuksek-endusuk)/100*323.6+parseInt(enyuksek);
     var pd= document.getElementById("pd").value;
-    var pdex= document.getElementById("milyon-milyar").value;
     var h1pd=(h1/coinValue)*pd;
     var tepepd=(h2/coinValue)*pd;
+    var pdex= document.getElementById("milyon-milyar").value;
+    var pdex2=pdex;
+    var pdex3=pdex;
     var table= document.getElementById("rtable");
     var puan1= document.getElementById("puan1");
     
-    if(coinName=="" || coinValue=="" || enyuksek=="" || endusuk=="" || pd==""){
+    if(coinName=="" || coinValue=="" || enyuksek=="" || endusuk=="" || pd==""){ //You should fill the form
         document.getElementById("uyari").innerHTML="Coin Adı, b ve c değeri, Güncel Fiyat ve Piyasa Değeri boş bırakılamaz";
     }else{
 
-        document.getElementById("uyari").innerHTML="";    
+        document.getElementById("uyari").innerHTML="";    //Removes warning span
 
-    if(pd.length>3 && pdex=="milyon"){
+    if(pd.length>3 && pdex=="milyon"){ //Converting milyon into milyar
         
         if(pd.length==4){
             pd=pd.substring(0,1)+"."+pd.substring(1,2);
@@ -31,9 +33,35 @@ function ekle() {
             pd=pd.substring(0,3)+"."+pd.substring(3,4);
         }
         pdex="milyar";
+        pdex2="milyar";
+        pdex3="milyar";
+        var h1pd=(h1/coinValue)*pd;
+        var tepepd=(h2/coinValue)*pd;
+    }
+
+    h1pd=h1pd.toPrecision(4);  //Standartizing Numbers
+    tepepd=tepepd.toPrecision(4); //Standartizing Numbers
+
+    var kural=/\./; //Searches for a Dot in string
+    if(!kural.test(h1pd) && pdex=="milyon"){ //if theres no Dot
+        h1pd=h1pd.substring(0,1)+"."+h1pd.substring(1,2);
+        pdex2="milyar";
+    }
+    if(!kural.test(h1pd) && pdex=="milyar"){
+        h1pd=h1pd.substring(0,1)+"."+h1pd.substring(1,2);
+        pdex2="trilyon";
+    }
+    if(!kural.test(tepepd) && pdex=="milyon"){
+        tepepd=tepepd.substring(0,1)+"."+tepepd.substring(1,2);
+        pdex3="milyar";
+    }
+    if(!kural.test(tepepd) && pdex=="milyar"){
+        tepepd=tepepd.substring(0,1)+"."+tepepd.substring(1,2);
+        pdex3="trilyon";
     }
    
-    if(h1/coinValue>=4 && h1/coinValue<=5){
+    //Calculations of Puan
+    if(h1/coinValue>=4 && h1/coinValue<=5){ 
         puan=puan+1;
     } else if(h1/coinValue>=6 && h1/coinValue<=8){
         puan=puan+2;
@@ -56,17 +84,18 @@ function ekle() {
     if(puan1.checked==true){
         puan=puan+1;
     }
+    //Calculations of Puan End
 
-
-    var template= "<tr><th>"+coinName+"</th><td>"+coinValue+"</td><td>"+h1.toPrecision(4)+"</td><td>"+h2.toPrecision(4)+"</td><td style='color:white; background:"+color(pd, pdex)+";'>"+pd+" "+pdex+"</td><td style='color:white; background:"+color(h1pd, pdex)+";'>"+h1pd+" "+pdex+"</td><td style='color:white; background:"+color(tepepd, pdex)+";'>"+tepepd+" "+pdex+"</td><th>"+puan+"</th></tr>";
+    //Template that will be pushed into the table
+    var template= "<tr><th>"+coinName+"</th><td>"+coinValue+"</td><td>"+h1.toPrecision(4)+"</td><td>"+h2.toPrecision(4)+"</td><td style='color:white; background:"+color(pd, pdex)+";'>"+pd+" "+pdex+"</td><td style='color:white; background:"+color(h1pd, pdex2)+";'>"+h1pd+" "+pdex2+"</td><td style='color:white; background:"+color(tepepd, pdex3)+";'>"+tepepd+" "+pdex3+"</td><th>"+puan+"</th></tr>";
    
-    table.innerHTML += template;
-    puan=0;
+    table.innerHTML += template; //Adding Template into the table
+    puan=0; //Resets Puan
 }
 }
 
 
-function color(a, b){
+function color(a, b){  //Color Calculations and Styling for Table
 
     if(a<=100 && b=="milyon"){
         puan=puan+3;
@@ -79,14 +108,18 @@ function color(a, b){
         return "red";
     } else if(a<=3 && b=="milyar"){
         puan=puan+1;
-        return "red"
-    } else if(a<=900 && b=="milyar"){
-        return "purple"
-    }
+        return "red";
+    } else if(a<1000 && b=="milyar"){
+        return "purple";
+    } else if(a<10000 && b=="trilyon"){
+        return "black";
+    } 
 
 }
 
-function prevent(a){
+
+
+function prevent(a){ //Prevents Length of input to be over 6
     if (a.value.length > 6){
       a.value = a.value.slice(0, 6)
     }
